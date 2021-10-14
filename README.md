@@ -1,1 +1,1 @@
-# weed-day-planner
+# week-day-planner
