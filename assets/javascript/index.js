@@ -1,12 +1,7 @@
-window.onload = function() {
-    onLoad();
-};
-
 const onLoad = function() {
     renderCurrentDate();
-    // read from local storage
-    // constructTimeBlock();
-    // set time-block colours
+    readFromLS();
+    // setTBColour();
     // fill time-block with each key: value
 };
 
@@ -26,6 +21,36 @@ const renderCurrentDate = () => {
     headerDate.innerText = getCurrentDate();
 }
 
+const readFromLS = () => {
+
+    const hour9 = localStorage.getItem('9');
+    $("#9 .description").val(hour9);
+
+    const hour10 = localStorage.getItem('10');
+    $("#10 .description").val(hour10);
+
+    const hour11 = localStorage.getItem('11');
+    $("#11 .description").val(hour11);
+
+    const hour12 = localStorage.getItem('12');
+    $("#12 .description").val(hour12);
+
+    const hour13 = localStorage.getItem('13');
+    $("#13 .description").val(hour13);
+
+    const hour14 = localStorage.getItem('14');
+    $("#14 .description").val(hour14);
+
+    const hour15 = localStorage.getItem('15');
+    $("#15 .description").val(hour15);
+
+    const hour16 = localStorage.getItem('16');
+    $("#16 .description").val(hour16);
+
+    const hour17 = localStorage.getItem('17');
+    $("#17 .description").val(hour17);
+};
+
 $(".saveBtn").on("click", function() {
 
     let valueOfHour = $(this).siblings(".description").val();
@@ -35,12 +60,8 @@ $(".saveBtn").on("click", function() {
     console.log('Value:', valueOfHour);
 
     localStorage.setItem(hourClicked, valueOfHour);
-
-
 })
 
-// const setClassName = () => {
-//     // get current time
-//     // set class depending on current time
-//     // past, present, future 
-// };
+window.onload = function() {
+    onLoad();
+};
