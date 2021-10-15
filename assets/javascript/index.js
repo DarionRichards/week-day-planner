@@ -1,9 +1,12 @@
+window.onload = function() {
+    onLoad();
+};
+
 const onLoad = function() {
-    constructHeaderDate();
+    renderCurrentDate();
+    // read from local storage
     // constructTimeBlock();
     // set time-block colours
-    // set local storage
-    // read from local storage (if previous data saved)
     // fill time-block with each key: value
 };
 
@@ -18,20 +21,26 @@ const getCurrentDate = () => {
     return timerTick();
 };
 
-const constructHeaderDate = () => {
+const renderCurrentDate = () => {
     const headerDate = document.getElementById('currentDay');
     headerDate.innerText = getCurrentDate();
 }
 
-const constructTimeBlock = () => {
+$(".saveBtn").on("click", function() {
 
-    // set time block colour (past, present, future)
-};
+    let valueOfHour = $(this).siblings(".description").val();
+    let hourClicked = $(this).parent().attr("id");
 
-const setClassName = () => {
-    // get current time 
-};
+    console.log('Key:', hourClicked);
+    console.log('Value:', valueOfHour);
 
-window.onload = function() {
-    onLoad();
-};
+    localStorage.setItem(hourClicked, valueOfHour);
+
+
+})
+
+// const setClassName = () => {
+//     // get current time
+//     // set class depending on current time
+//     // past, present, future 
+// };
