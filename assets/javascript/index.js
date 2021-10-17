@@ -1,5 +1,3 @@
-$(document).ready(onLoad);
-
 // function that runs when DOM is fully loaded
 const onLoad = function() {
     renderCurrentDate();
@@ -92,3 +90,5 @@ const setTBColour = () => {
         }
     });
 };
+
+$(document).ready(onLoad);
