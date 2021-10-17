@@ -1,3 +1,6 @@
+$(document).ready(onLoad);
+
+// function that runs when DOM is fully loaded
 const onLoad = function() {
     renderCurrentDate();
     readFromLS();
@@ -6,20 +9,25 @@ const onLoad = function() {
 
 const getCurrentDate = () => {
 
+    // get the current date and time
     const timerTick = () => {
-        let date = moment().format('MMMM Do YYYY, h:mm:ss a');
+        let date = moment().format('MMMM Do YYYY, h:mm a');
         return date
     }
+
+    // repeat timerTick function every second
     window.setInterval(timerTick, 1000);
 
     return timerTick();
 };
 
+// print date to HTML
 const renderCurrentDate = () => {
     const headerDate = document.getElementById('currentDay');
     headerDate.innerText = getCurrentDate();
 }
 
+// get the values of each key, if present
 const readFromLS = () => {
 
     const hour9 = localStorage.getItem('9');
@@ -61,14 +69,19 @@ $(".saveBtn").on("click", function() {
 
 const setTBColour = () => {
 
+    // variable to store current time of the hrs only
     const currentTime = moment().hours()
 
+    // set colour for each time block
     $(".time-block").each(function() {
 
+        // get each time block ID
         const hour = parseInt($(this).attr("id"))
 
+        // print to each second child within a time block container
         const textArea = $(this).children()[1]
 
+        // depending on current time, set the correct colour
         if (hour < currentTime) {
 
             textArea.classList.add('past');
@@ -77,8 +90,5 @@ const setTBColour = () => {
         } else {
             textArea.classList.add('future');
         }
-
     });
 };
-
-$(document).ready(onLoad);
