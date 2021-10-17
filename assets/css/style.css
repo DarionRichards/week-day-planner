@@ -22,7 +22,6 @@ body {
 }
 
 .row>textarea {
-    background: lightgray;
     border: none;
     resize: none;
     color: #000000;

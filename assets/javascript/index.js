@@ -1,8 +1,7 @@
 const onLoad = function() {
     renderCurrentDate();
     readFromLS();
-    // setTBColour();
-    // fill time-block with each key: value
+    setTBColour();
 };
 
 const getCurrentDate = () => {
@@ -56,12 +55,30 @@ $(".saveBtn").on("click", function() {
     let valueOfHour = $(this).siblings(".description").val();
     let hourClicked = $(this).parent().attr("id");
 
-    console.log('Key:', hourClicked);
-    console.log('Value:', valueOfHour);
-
     localStorage.setItem(hourClicked, valueOfHour);
 })
 
-window.onload = function() {
-    onLoad();
+
+const setTBColour = () => {
+
+    const currentTime = moment().hours()
+
+    $(".time-block").each(function() {
+
+        const hour = parseInt($(this).attr("id"))
+
+        const textArea = $(this).children()[1]
+
+        if (hour < currentTime) {
+
+            textArea.classList.add('past');
+        } else if (hour === currentTime) {
+            textArea.classList.add('present');
+        } else {
+            textArea.classList.add('future');
+        }
+
+    });
 };
+
+$(document).ready(onLoad);
